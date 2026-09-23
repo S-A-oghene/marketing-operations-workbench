@@ -19,8 +19,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for f in import/mow/chunk-00 import/mow/chunk-01 import/mow/chunk-02 import/mow/chunk-03; do
-            test -f "$f"
+          for i in $(seq -w 0 11); do
+            test -f "import/mow/part-$i"
           done
           echo "ready=true" >> "$GITHUB_OUTPUT"
 
@@ -32,13 +32,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          cat import/mow/chunk-00 import/mow/chunk-01 import/mow/chunk-02 import/mow/chunk-03 > /tmp/mow-source.b64
+          cat $(for i in $(seq -w 0 11); do printf 'import/mow/part-%s ' "$i"; done) > /tmp/mow-source.b64
           base64 --decode /tmp/mow-source.b64 > /tmp/mow-source.tgz
           rm -rf /tmp/mow-source
           mkdir -p /tmp/mow-source
           tar -xzf /tmp/mow-source.tgz -C /tmp/mow-source
 
-          rsync -a --delete             --exclude '.git'             /tmp/mow-source/ ./
+          rsync -a --delete --exclude '.git' /tmp/mow-source/ ./
 
           mkdir -p docs/release
           cat > docs/release/remote-publication.md <<EOF
@@ -48,7 +48,7 @@ Local verified source commit imported: `$SOURCE_COMMIT`
 
 Remote repository: `S-A-oghene/marketing-operations-workbench`
 
-The repository was empty before this import. The source tree was transferred through a temporary GitHub Actions bootstrap process and the temporary bootstrap/import artifacts are removed by this workflow.
+The repository was empty before this import. The source tree was transferred through a temporary GitHub Actions bootstrap process and the temporary bootstrap/import artifacts are removed by the import commit.
 
 This record does not claim v1.0.0 release acceptance; the release gate remains subject to the evidence required by the master manual.
 EOF
