@@ -1,0 +1,1 @@
+{"files":[],"references":[{"path":"./packages/core/tsconfig.json"},{"path":"./packages/shared/tsconfig.json"},{"path":"./packages/recipes/tsconfig.json"},{"path":"./packages/evaluators/tsconfig.json"},{"path":"./packages/ai-gateway/tsconfig.json"},{"path":"./packages/connectors/tsconfig.json"}],"compilerOptions":{"strict":true,"noEmit":true}}

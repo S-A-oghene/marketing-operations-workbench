@@ -1,0 +1,12 @@
+CREATE INDEX IF NOT EXISTS idx_memberships_workspace ON memberships(workspace_id);
+CREATE INDEX IF NOT EXISTS idx_content_workspace_status ON content_items(workspace_id,status);
+CREATE INDEX IF NOT EXISTS idx_tasks_workspace_status_due ON tasks(workspace_id,status,due_at);
+CREATE INDEX IF NOT EXISTS idx_calendar_workspace_date ON content_calendar(workspace_id,date);
+CREATE INDEX IF NOT EXISTS idx_ai_requests_workspace_created ON ai_requests(workspace_id,created_at);
+CREATE INDEX IF NOT EXISTS idx_ai_responses_request ON ai_responses(request_id);
+CREATE INDEX IF NOT EXISTS idx_research_workspace_captured ON research_items(workspace_id,captured_at);
+CREATE INDEX IF NOT EXISTS idx_influencers_workspace_status ON influencers(workspace_id,status);
+CREATE INDEX IF NOT EXISTS idx_assets_workspace_campaign ON assets(workspace_id,campaign_id);
+CREATE INDEX IF NOT EXISTS idx_metrics_workspace_period ON metric_snapshots(workspace_id,period_start,period_end);
+CREATE INDEX IF NOT EXISTS idx_audit_workspace_created ON audit_events(workspace_id,created_at);
+CREATE INDEX IF NOT EXISTS idx_jobs_workspace_status ON jobs(workspace_id,status);

@@ -1,0 +1,17 @@
+{
+  "name": "@mow/ai-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.check.json",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@mow/core": "1.0.0",
+    "@mow/shared": "1.0.0",
+    "@mow/recipes": "1.0.0"
+  },
+  "type": "module"
+}

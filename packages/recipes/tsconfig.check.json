@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","module":"ESNext","moduleResolution":"Bundler","strict":true,"noEmit":true,"skipLibCheck":true,"baseUrl":".","paths":{"@mow/core":["../core/src/index.ts"],"@mow/shared":["../shared/src/index.ts"]}},"include":["src/**/*.ts","../core/src/**/*.ts","../shared/src/**/*.ts"]}

@@ -1,0 +1,34 @@
+node_modules/
+.next/
+out/
+dist/
+coverage/
+playwright-report/
+test-results/
+.wrangler/
+.dev.vars
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+# Backups & payloads (local working data)
+.mow-navfix-backup-*/
+.mow-repair-backup-*/
+.mow-uiux-backup-*/
+.mow-ux-end-to-end-backup-*/
+.mow-uxfix-backup-*/
+.mow-navfix-payload/
+.mow-uxfix-payload/
+mow-ux-payload/
+mow-uiux-redesign/
+
+# Build/test artifacts
+artifacts/
+
+# Local config with potential secrets
+.npmrc
+
+# Backup files
+*.backup
+package.json.backup   cls

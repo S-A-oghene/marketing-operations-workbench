@@ -1,0 +1,1 @@
+export default function NotFound(){return <main className="content"><div className="card"><h1>Not found</h1><p className="muted">The Workbench route does not exist.</p></div></main>}

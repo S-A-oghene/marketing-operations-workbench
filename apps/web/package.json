@@ -1,0 +1,1 @@
+{"name":"@mow/web","version":"1.0.0","private":true,"scripts":{"dev":"next dev -p 3000","build":"next build","typecheck":"tsc -p tsconfig.json"},"dependencies":{"@mow/ai-gateway":"1.0.0","@mow/connectors":"1.0.0","@mow/core":"1.0.0","@mow/evaluators":"1.0.0","@mow/recipes":"1.0.0","@mow/shared":"1.0.0","next":"16.3.6","react":"19.3.0","react-dom":"19.3.0"}}

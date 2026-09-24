@@ -1,0 +1,16 @@
+const root="../packages/core/src";
+const {canPublish,canTransitionContent}=await import(`${root}/state.ts`);
+const {canSendToRemoteAi,containsRestrictedSecret}=await import(`${root}/policy.ts`);
+const {runDeterministicQa}=await import(`${root}/qa.ts`);
+const {chooseEligibleProvider}=await import(`${root}/routing.ts`);
+const {validateAiGenerationRequest}=await import(`${root}/validation.ts`);
+const {evaluateBrandCompliance}=await import(`${root}/brand.ts`);
+if(canTransitionContent("DRAFT","PUBLISHED"))throw new Error("DRAFT_TO_PUBLISHED_BYPASS");
+if(!canPublish({current:"SCHEDULED",target:"PUBLISHED",approvalState:"APPROVED",approvalRequired:true,evidence:"MANUAL_CONFIRMED",duplicate:false}).allowed)throw new Error("PUBLISH_GATE");
+if(canSendToRemoteAi("RESTRICTED",true,{allowPublic:true,allowLowSensitivity:true,allowConfidential:true,allowPersonal:true}).allowed)throw new Error("RESTRICTED_REMOTE_AI");
+if(!containsRestrictedSecret("password: secret"))throw new Error("SECRET_DETECTOR");
+if(runDeterministicQa({audience:"SMB",objective:"engagement",platform:"TikTok",cta:"Try",body:"This increases conversions by 40%",sourceRefs:[]}).overall!=="FAIL")throw new Error("METRIC_QA");
+let invalidRejected=false;try{validateAiGenerationRequest({requestId:"r",recipeId:"social_post_create",taskType:"CREATIVE_GENERATION",objective:"engage",constraints:[],inputs:[],dataClass:"PUBLIC",preferredMode:"NOPE",maxCandidates:1,allowExternalInference:false,requireHumanApproval:true});}catch{invalidRejected=true;}if(!invalidRejected)throw new Error("AI_REQUEST_VALIDATION");
+const brand=evaluateBrandCompliance("Use this",{brandName:"Demo",audience:"SMB",voice:"clear",tone:"practical",doRules:[],dontRules:["guaranteed"],visualRules:[],ctaRules:["try"],claimRules:[],platformRules:[]});if(brand.status!=="WARN")throw new Error("BRAND_RULE_CHECK");
+if(chooseEligibleProvider([{providerId:"unverified",state:"CONNECTED",capabilities:["generate_text"],priority:0},{providerId:"ready",state:"READY",capabilities:["generate_text"],priority:1}],"generate_text","PUBLIC",true)?.providerId!=="ready")throw new Error("READY_ROUTING");
+console.log("DIRECT_CORE_SMOKE=PASS");

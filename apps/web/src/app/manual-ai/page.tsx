@@ -1,0 +1,1 @@
+import { ManualBridge } from "../../components/ManualBridge"; export default function ManualAiPage(){return <ManualBridge/>;}
