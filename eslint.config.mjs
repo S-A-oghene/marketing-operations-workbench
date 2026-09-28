@@ -25,6 +25,13 @@ const eslintConfig = defineConfig([
     "**/.mow-navfix-backup-*/",
     "**/.mow-uiux-backup-*/",
     "**/.mow-ux-backup-*/",
+    "**/.mow-ux-end-to-end-backup-*/",
+    "**/.mow-uxfix-backup-*/",
+    "**/.mow-uxfix-payload/**",
+    "**/.mow-ux-payload/**",
+    "**/.mow-uiux-backup-*/",
+    "**/mow-ux-payload/**",
+    "**/mow-uiux-redesign/**",
   ]),
 ]);
 

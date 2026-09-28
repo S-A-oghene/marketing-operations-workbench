@@ -1,0 +1,442 @@
+﻿MARKETING OPERATIONS WORKBENCH â€” AUDIT TEST RESULTS
+=====================================================
+Repository: C:\Users\HSEF 2026\Documents\MOW\marketing-operations-workbench
+Audit started: 2026-09-26 01:06:58 +02:00
+PowerShell: 5.1.26100.6584
+OS: Microsoft Windows NT 10.0.26200.0
+
+ENVIRONMENT SNAPSHOT
+--------------------
+Node: v22.23.3
+npm: 11.20.0
+Git branch: main
+Git HEAD: 6cbea652fff0351384bb19da421561b091271df4
+Git status:
+ M README.md
+ M apps/web/src/app/globals.css
+ M apps/web/src/components/Dashboard.tsx
+ M apps/web/src/components/ModulePage.tsx
+ M eslint.config.mjs
+ M tests/e2e/workbench.spec.ts
+?? INSTALL-MOW-UX-END-TO-END.ps1
+?? MANIFEST.txt
+?? MOW-AUDIT-RESULTS-20260926-010658.txt
+?? MOW-ENGINEERING-PASS-20260924.md
+?? MOW-ENGINEERING-PASS-20260924.patch
+?? MOW-INSTALL-MANIFEST.txt
+?? MOW-PACKAGE-MANIFEST.txt
+?? MOW-PATCH-AND-RELEASE-STANDARD.md
+?? README-INSTALL-MOW-UX-END-TO-END.md
+?? RUN-MOW-AUDIT.ps1
+?? SHA256SUMS.txt
+?? docs/release/MOW-BROWSER-ACCEPTANCE-CHECKLIST.md
+?? docs/release/MOW-PATCH-AND-RELEASE-STANDARD.md
+?? docs/release/MOW-POST-INSTALL-RELEASE-GATE.md
+?? docs/release/MOW-REGRESSION-BASELINE-20260924.md
+
+========================================================================================
+TEST: 01 npm install
+START: 2026-09-26 01:07:05 +02:00
+COMMAND: npm install --no-audit --no-fund
+========================================================================================
+
+up to date in 24s
+npm warn install-scripts 3 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   esbuild@0.28.1 (postinstall: node install.js)
+npm warn install-scripts   unrs-resolver@1.12.2 (postinstall: node postinstall.js)
+npm warn install-scripts   workerd@1.20260921.1 (postinstall: node install.js)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+npm notice
+npm notice New major version of npm available! 11.20.0 -> 12.1.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+npm notice To update run: npm install -g npm@12.1.0
+npm notice
+
+END: 2026-09-26 01:07:31 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 25.8
+RESULT: PASS
+
+========================================================================================
+TEST: 02 npm run typecheck
+START: 2026-09-26 01:07:31 +02:00
+COMMAND: npm run typecheck
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 typecheck
+> npm --workspace @mow/core run typecheck && npm --workspace @mow/shared run typecheck && npm --workspace @mow/recipes run typecheck && npm --workspace @mow/evaluators run typecheck && npm --workspace @mow/ai-gateway run typecheck && npm --workspace @mow/connectors run typecheck && npm --workspace apps/web run typecheck
+
+
+> @mow/core@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/shared@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/recipes@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/evaluators@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/ai-gateway@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/connectors@1.0.0 typecheck
+> tsc -p tsconfig.check.json
+
+
+> @mow/web@1.0.0 typecheck
+> tsc -p tsconfig.json
+
+
+END: 2026-09-26 01:08:11 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 39.6
+RESULT: PASS
+
+========================================================================================
+TEST: 03 npm run lint
+START: 2026-09-26 01:08:11 +02:00
+COMMAND: npm run lint
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 lint
+> eslint .
+
+
+C:\Users\HSEF 2026\Documents\MOW\marketing-operations-workbench\apps\web\worker\index.ts
+  132:1  warning  Assign object to a variable before exporting as module default  import/no-anonymous-default-export
+
+Γ£û 1 problem (0 errors, 1 warning)
+
+
+END: 2026-09-26 01:10:13 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 122.4
+RESULT: PASS
+
+========================================================================================
+TEST: 04 npm run unit
+START: 2026-09-26 01:10:14 +02:00
+COMMAND: npm run unit
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 unit
+> npm run build:packages && vitest run
+
+
+> marketing-operations-workbench@1.0.0 build:packages
+> npm --workspace @mow/shared run build && npm --workspace @mow/core run build && npm --workspace @mow/recipes run build && npm --workspace @mow/evaluators run build && npm --workspace @mow/ai-gateway run build && npm --workspace @mow/connectors run build
+
+
+> @mow/shared@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/core@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/recipes@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/evaluators@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/ai-gateway@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/connectors@1.0.0 build
+> tsc -p tsconfig.json
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.1 [39m[90mC:/Users/HSEF 2026/Documents/MOW/marketing-operations-workbench[39m
+
+ [32mΓ£ô[39m tests/adversarial/security.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32mΓ£ô[39m tests/unit/core.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32mΓ£ô[39m tests/integration/gateway.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 28[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m3 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 01:10:46
+[2m   Duration [22m 2.28s[2m (transform 56%, import 22%, worker 18%, tests 4%)[22m
+
+
+END: 2026-09-26 01:10:48 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 34.6
+RESULT: PASS
+
+========================================================================================
+TEST: 05 npm run integration
+START: 2026-09-26 01:10:48 +02:00
+COMMAND: npm run integration
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 integration
+> npm run build:packages && vitest run tests/integration
+
+
+> marketing-operations-workbench@1.0.0 build:packages
+> npm --workspace @mow/shared run build && npm --workspace @mow/core run build && npm --workspace @mow/recipes run build && npm --workspace @mow/evaluators run build && npm --workspace @mow/ai-gateway run build && npm --workspace @mow/connectors run build
+
+
+> @mow/shared@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/core@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/recipes@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/evaluators@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/ai-gateway@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/connectors@1.0.0 build
+> tsc -p tsconfig.json
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv5.0.1 [39m[90mC:/Users/HSEF 2026/Documents/MOW/marketing-operations-workbench[39m
+
+ [32mΓ£ô[39m tests/integration/gateway.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 19[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m   Start at [22m 01:11:17
+[2m   Duration [22m 758ms[2m (transform 69%, import 22%, tests 5%, worker 4%)[22m
+
+
+END: 2026-09-26 01:11:18 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 29.6
+RESULT: PASS
+
+========================================================================================
+TEST: 06 npm run security
+START: 2026-09-26 01:11:18 +02:00
+COMMAND: npm run security
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 security
+> node scripts/security-check.mjs
+
+Security scan passed.
+
+END: 2026-09-26 01:11:20 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 2.1
+RESULT: PASS
+
+========================================================================================
+TEST: 07 npm run build
+START: 2026-09-26 01:11:20 +02:00
+COMMAND: npm run build
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 build
+> npm run build:packages && npm --workspace apps/web run build
+
+
+> marketing-operations-workbench@1.0.0 build:packages
+> npm --workspace @mow/shared run build && npm --workspace @mow/core run build && npm --workspace @mow/recipes run build && npm --workspace @mow/evaluators run build && npm --workspace @mow/ai-gateway run build && npm --workspace @mow/connectors run build
+
+
+> @mow/shared@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/core@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/recipes@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/evaluators@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/ai-gateway@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/connectors@1.0.0 build
+> tsc -p tsconfig.json
+
+
+> @mow/web@1.0.0 build
+> next build
+
+Γû▓ Next.js 16.3.6 (Turbopack)
+Γ£ô Running next.config.ts took 270ms
+
+  Creating an optimized production build ...
+Γ£ô Compiled successfully in 19.7s
+  Running TypeScript ...
+  Finished TypeScript in 7.7s ...
+  Collecting page data using 6 workers ...
+  Generating static pages using 6 workers (0/24) ...
+  Generating static pages using 6 workers (6/24) 
+  Generating static pages using 6 workers (12/24) 
+  Generating static pages using 6 workers (18/24) 
+Γ£ô Generating static pages using 6 workers (24/24) in 2.9s
+  Finalizing page optimization ...
+
+Route (app)
+Γöî Γùï /
+Γö£ Γùï /_not-found
+Γö£   /[area]
+Γöé Γö£ ΓùÅ /today
+Γöé Γö£ ΓùÅ /tasks
+Γöé Γö£ ΓùÅ /content-calendar
+Γöé Γöö ΓùÅ [+17 more paths]
+Γöö Γùï /manual-ai
+
+
+Γùï  (Static)  prerendered as static content
+ΓùÅ  (SSG)     prerendered as static HTML (uses generateStaticParams)
+
+
+END: 2026-09-26 01:12:54 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 93.5
+RESULT: PASS
+
+========================================================================================
+TEST: 08 npx playwright install chromium
+START: 2026-09-26 01:12:54 +02:00
+COMMAND: npx playwright install chromium
+========================================================================================
+
+END: 2026-09-26 01:13:04 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 10.1
+RESULT: PASS
+
+========================================================================================
+TEST: 09 npm run e2e
+START: 2026-09-26 01:13:04 +02:00
+COMMAND: npm run e2e
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 e2e
+> playwright test
+
+
+Running 10 tests using 1 worker
+
+  Γ£ô   1 tests\e2e\workbench.spec.ts:3:5 ΓÇ║ command center loads (2.4s)
+  Γ£ô   2 tests\e2e\workbench.spec.ts:9:5 ΓÇ║ navigation collapses and expands on desktop (2.6s)
+  Γ£ô   3 tests\e2e\workbench.spec.ts:23:5 ΓÇ║ navigation opens and closes on medium screens (2.5s)
+  Γ£ô   4 tests\e2e\workbench.spec.ts:33:5 ΓÇ║ navigation opens and closes on mobile (2.0s)
+  Γ£ô   5 tests\e2e\workbench.spec.ts:43:5 ΓÇ║ command search is actionable (2.7s)
+  Γ£ô   6 tests\e2e\workbench.spec.ts:56:5 ΓÇ║ module builders open and close across core work surfaces (5.4s)
+  Γ£ô   7 tests\e2e\workbench.spec.ts:68:5 ΓÇ║ campaign create flow persists a real demo workspace record (2.4s)
+  Γ£ô   8 tests\e2e\workbench.spec.ts:81:5 ΓÇ║ filters, display and view controls change the surface (2.0s)
+  Γ£ô   9 tests\e2e\workbench.spec.ts:89:5 ΓÇ║ AI gateway runs in no-AI mode without a provider (1.9s)
+  Γ£ô  10 tests\e2e\workbench.spec.ts:96:5 ΓÇ║ manual bridge validates JSON locally (1.6s)
+
+  10 passed (32.1s)
+
+END: 2026-09-26 01:13:40 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 35.5
+RESULT: PASS
+
+========================================================================================
+TEST: 10 npm run verify
+START: 2026-09-26 01:13:40 +02:00
+COMMAND: npm run verify
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 verify
+> node scripts/verify-all.mjs
+
+=== SECURITY ===
+Security scan passed.
+=== TRACEABILITY ===
+Traceability written: 142 rows.
+=== CORE ===
+DIRECT_CORE_SMOKE=PASS
+=== PORTABLE ===
+PORTABLE_EXPORT_RESTORE=PASS tables=38 assets=1
+(node:16088) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+Deterministic verification helpers complete. Dependency-backed Next/Vitest/Playwright/Cloudflare verification requires npm install and, for live checks, credentials/resources.
+
+END: 2026-09-26 01:13:43 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 2.8
+RESULT: PASS
+
+========================================================================================
+TEST: 11 npm run verify:ui
+START: 2026-09-26 01:13:43 +02:00
+COMMAND: npm run verify:ui
+========================================================================================
+
+> marketing-operations-workbench@1.0.0 verify:ui
+> node scripts/verify-ui-interactions.mjs
+
+UI_INTERACTION_VERIFY=PASS
+resources=17
+actions=30
+button-handler-scan=PASS
+dead-placeholder-scan=PASS
+api-worker-route-scan=PASS
+manual-capability-gates=PASS
+module-insights-scan=PASS
+navigation-wiring=PASS
+demo-fallback=PASS
+
+END: 2026-09-26 01:13:44 +02:00
+EXIT_CODE: 0
+DURATION_SECONDS: 1.4
+RESULT: PASS
+
+
+========================================================================================
+FINAL AUDIT SUMMARY
+========================================================================================
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+                                        EXIT=    DURATION=        s
+
+PASS_COUNT: 0
+FAIL_COUNT: 0
+OVERALL_RESULT: PASS
+Audit completed: 2026-09-26 01:13:45 +02:00
+Full per-command logs: C:\Users\HSEF20~1\AppData\Local\Temp\MOW-AUDIT-20260926-010658
+
+IMPORTANT AUDIT NOTE:
+This report captures the actual commands executed on the operator machine.
+A PASS means the command returned exit code 0 in this run; it does not replace
+the manual security, release, recovery, and evidence review requirements.

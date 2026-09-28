@@ -56,7 +56,7 @@ test("command search is actionable", async ({ page }) => {
 test("module builders open and close across core work surfaces", async ({ page }) => {
   for (const [path, actionName] of [["/campaigns", "Create campaign"], ["/meta-ads", "Create ad plan"], ["/analytics", "Record metric"], ["/outreach", "Draft outreach"]] as const) {
     await page.goto(path);
-    const action = page.getByRole("button", { name: actionName });
+    const action = page.getByRole("button", { name: actionName }).first();
     await expect(action).toBeVisible();
     await action.click();
     await expect(page.getByRole("dialog")).toBeVisible();
@@ -67,7 +67,7 @@ test("module builders open and close across core work surfaces", async ({ page }
 
 test("campaign create flow persists a real demo workspace record", async ({ page }) => {
   await page.goto("/campaigns");
-  await page.getByRole("button", { name: "Create campaign" }).click();
+  await page.getByRole("button", { name: "Create campaign" }).first().click();
   const dialog = page.getByRole("dialog", { name: /Create campaign/i });
   await dialog.getByLabel("Campaign name").fill("E2E interaction campaign");
   await dialog.getByLabel("Objective").fill("Engagement");

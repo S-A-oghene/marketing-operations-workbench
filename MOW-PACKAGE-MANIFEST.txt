@@ -1,0 +1,48 @@
+MOW State-of-the-Art End-to-End UX Remediation — Policy-Aligned Package
+Date: 24 September 2026
+
+PACKAGE PURPOSE
+Installer-first remediation overlay for the existing MOW repository.
+
+REQUIRED ORDER
+1. Close running MOW dev server.
+2. Extract package into existing repository root.
+3. Confirm INSTALL-MOW-UX-END-TO-END.ps1 exists.
+4. Run installer.
+5. Confirm timestamped backup exists.
+6. Run the exact unchanged 11-command real-repository gate.
+7. Perform manual browser acceptance.
+8. Record release evidence.
+
+PRIMARY FILES
+INSTALL-MOW-UX-END-TO-END.ps1
+README.md
+README-INSTALL-MOW-UX-END-TO-END.md
+MOW-PATCH-AND-RELEASE-STANDARD.md
+MOW-ENGINEERING-PASS-20260924.md
+MOW-ENGINEERING-PASS-20260924.patch
+MOW-PACKAGE-MANIFEST.txt
+
+RELEASE DOCUMENTS
+docs/release/MOW-POST-INSTALL-RELEASE-GATE.md
+docs/release/MOW-BROWSER-ACCEPTANCE-CHECKLIST.md
+docs/release/MOW-REGRESSION-BASELINE-20260924.md
+docs/release/MOW-AUDIT-RESULTS-20260924-144532.txt
+
+PAYLOAD
+mow-ux-payload/apps/web/src/components/Dashboard.tsx
+mow-ux-payload/apps/web/src/components/ModulePage.tsx
+mow-ux-payload/apps/web/src/app/globals.css
+mow-ux-payload/tests/e2e/workbench.spec.ts
+mow-ux-payload/eslint.config.mjs
+mow-ux-payload/MOW-ENGINEERING-PASS-20260924.md
+mow-ux-payload/docs/release/MOW-POST-INSTALL-RELEASE-GATE.md
+mow-ux-payload/docs/release/MOW-PATCH-AND-RELEASE-STANDARD.md
+mow-ux-payload/docs/release/MOW-BROWSER-ACCEPTANCE-CHECKLIST.md
+mow-ux-payload/docs/release/MOW-REGRESSION-BASELINE-20260924.md
+
+SAFETY
+The installer backs up pre-existing target files before replacement and rejects source/destination self-overwrite conditions.
+
+RELEASE RULE
+Do not use the previous audit's broken aggregate OVERALL_RESULT field as release evidence. Individual command exit codes and recorded evidence are authoritative.

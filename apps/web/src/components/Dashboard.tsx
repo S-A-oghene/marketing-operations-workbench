@@ -12,7 +12,7 @@ export function Dashboard(){
   const [busy,setBusy]=useState(false);
   const [error,setError]=useState("");
   const load=useCallback(async()=>{setBusy(true);setError("");try{const [d,p]=await Promise.all([getDashboard(),getProviderStatus()]);setData(d);setProviders(p.providers||[]);}catch(e){setError(e instanceof Error?e.message:"Unable to load dashboard");}finally{setBusy(false);}},[]);
-  useEffect(()=>{void load();},[load]);
+  useEffect(()=>{const timer=window.setTimeout(()=>{void load();},0);return()=>window.clearTimeout(timer);},[load]);
   const kpis:Kpi[]=useMemo(()=>[
     {label:"Due today",value:data?.tasksToday??"—",meta:"Tasks requiring attention",icon:"today",tone:"accent",href:"/today"},
     {label:"Needs approval / QA",value:data?.contentAttention??"—",meta:"Content in review flow",icon:"check",tone:"warn",href:"/content-studio"},
